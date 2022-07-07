@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Parcel Sandbox</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+
+    <body>
+        <header class="header">
+            <div class="player player-0">
+                <p class="player__name">Player 1</p>
+                <p class="player__score">0</p>
+            </div>
+            <p class="timer">20</p>
+            <div class="player player-1">
+                <p class="player__name">Player 2</p>
+                <p class="player__score">0</p>
+            </div>
+        </header>
+        <div class="menu">
+            <input class="name-input__input" placeholder="Player 1" />
+            <p class="vs">vs.</p>
+            <input class="name-input__input" placeholder="Player 2" />
+            <div class="play-button-container">
+                <button class="play-button" onclick="loadGame()">Play</button>
+            </div>
+        </div>
+        <h2 class="win-message"></h2>
+        <div class="memory-card-container">
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/254/200/200.jpg?hmac=wM9u9N0tgdWKFIr8MxBLr8rLoV0JjUUKLk32XFV8agQ"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/254/200/200.jpg?hmac=wM9u9N0tgdWKFIr8MxBLr8rLoV0JjUUKLk32XFV8agQ"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/47/200/200.jpg?hmac=dF66rvzPwuJCh4L7IjS6I0D5xrpPvqhAjbE7FstnEnY"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/47/200/200.jpg?hmac=dF66rvzPwuJCh4L7IjS6I0D5xrpPvqhAjbE7FstnEnY"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/841/200/200.jpg?hmac=jAPzaXgN_B37gVuIQvmtuRCmYEC0lJP86OZexH1yam4"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/841/200/200.jpg?hmac=jAPzaXgN_B37gVuIQvmtuRCmYEC0lJP86OZexH1yam4"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/263/200/200.jpg?hmac=M6XV5nVFFEhu9J37dng8WnB3jDTEi3AtqZm7E27mAaY"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/263/200/200.jpg?hmac=M6XV5nVFFEhu9J37dng8WnB3jDTEi3AtqZm7E27mAaY"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/1041/200/200.jpg?hmac=1CDPtzGhHDqltV1i3b5YV4hY9UYY_6ubvXbxJO9QchQ"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/1041/200/200.jpg?hmac=1CDPtzGhHDqltV1i3b5YV4hY9UYY_6ubvXbxJO9QchQ"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/221/200/200.jpg?hmac=zy33VSww4_QQk0Hf2MngBaudI_ahiadnRwuREDTbWnA"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/221/200/200.jpg?hmac=zy33VSww4_QQk0Hf2MngBaudI_ahiadnRwuREDTbWnA"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/475/200/200.jpg?hmac=w0GjBHfaInGqYKVb8AcVyrFmL3dhIhecY-MPodniV70"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/475/200/200.jpg?hmac=w0GjBHfaInGqYKVb8AcVyrFmL3dhIhecY-MPodniV70"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/598/200/200.jpg?hmac=CGTNWD3Wfl8FFUMGok-Kj_SsE7Yc80U-jxup04hpB5k"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/598/200/200.jpg?hmac=CGTNWD3Wfl8FFUMGok-Kj_SsE7Yc80U-jxup04hpB5k"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/139/200/200.jpg?hmac=FNSPvHsHcRzKQtNxKKauJgIXpoaAufCwYvr-1w5T3R4"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/139/200/200.jpg?hmac=FNSPvHsHcRzKQtNxKKauJgIXpoaAufCwYvr-1w5T3R4"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/24/200/200.jpg?hmac=Tw5b43UPAehS5e4JyB0qMQysvfLBmu_GZ_iafWou3m8"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/24/200/200.jpg?hmac=Tw5b43UPAehS5e4JyB0qMQysvfLBmu_GZ_iafWou3m8"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/1064/200/200.jpg?hmac=xUH-ovzKEHg51S8vchfOZNAOcHB6b1TI_HzthmqvcWU"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/1064/200/200.jpg?hmac=xUH-ovzKEHg51S8vchfOZNAOcHB6b1TI_HzthmqvcWU"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/32/200/200.jpg?hmac=O33StVyZ6hc7IKBGYYxg-q1uv2_GimqYake6LB-EieE"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/32/200/200.jpg?hmac=O33StVyZ6hc7IKBGYYxg-q1uv2_GimqYake6LB-EieE"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/43/200/200.jpg?hmac=gMoEYpdjrHoRnKoyIdtTknuqyCQDTC8exwLaKHpMv6E"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/43/200/200.jpg?hmac=gMoEYpdjrHoRnKoyIdtTknuqyCQDTC8exwLaKHpMv6E"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/184/200/200.jpg?hmac=MflhZikSXVt3rvwnx8_nAvoHdLOwJFA0B2_Mk8vQvms"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/184/200/200.jpg?hmac=MflhZikSXVt3rvwnx8_nAvoHdLOwJFA0B2_Mk8vQvms"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/29/200/200.jpg?hmac=555gm3Z1-4AkmdAj9t_Ql-1yIo7bMHpYRRyAz3xqavY"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/29/200/200.jpg?hmac=555gm3Z1-4AkmdAj9t_Ql-1yIo7bMHpYRRyAz3xqavY"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/0/200/200.jpg?hmac=RZmZI0kb9l_aRWHFyOZUGyc8xsyV30HOJX8a4wuHWkA"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/0/200/200.jpg?hmac=RZmZI0kb9l_aRWHFyOZUGyc8xsyV30HOJX8a4wuHWkA"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/819/200/200.jpg?hmac=nCwO4yKGbs8354aS0yf974UlPFBF_gwUSNazar7yBhk"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/819/200/200.jpg?hmac=nCwO4yKGbs8354aS0yf974UlPFBF_gwUSNazar7yBhk"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/839/200/200.jpg?hmac=IKyeqXa3iOwFkcM24B_X_Qjf9643wuDTCsTiM3T6AZg"
+                />
+            </div>
+            <div class="memory-card">
+                <image
+                    class="memory-card__image"
+                    src="https://i.picsum.photos/id/839/200/200.jpg?hmac=IKyeqXa3iOwFkcM24B_X_Qjf9643wuDTCsTiM3T6AZg"
+                />
+            </div>
+        </div>
+    </body>
+    <script src="index.js"></script>
+</html>
