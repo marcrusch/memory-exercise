@@ -70,22 +70,16 @@ function game() {
                                 score[activePlayer] = score[activePlayer] + 1;
                                 turn[0].style = 'opacity: 0;';
                                 turn[1].style = 'opacity: 0;';
-                                console.log(
-                                    Array.from(
-                                        document.querySelectorAll('memory-card')
-                                    ).length / 2
-                                );
                                 if (
                                     score[0] + score[1] ===
-                                    Array.from(
-                                        document.querySelectorAll(
-                                            '.memory-card'
-                                        )
-                                    ).length /
+                                    document.querySelectorAll('.memory-card')
+                                        .length /
                                         2
                                 ) {
                                     const name = document.querySelector(
-                                        `.player-${activePlayer} .player__name`
+                                        `.player-${
+                                            score[0] > score[1] ? 0 : 1
+                                        } .player__name`
                                     ).innerHTML;
                                     document.querySelector(
                                         '.win-message'
