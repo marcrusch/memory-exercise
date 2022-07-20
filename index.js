@@ -8,6 +8,10 @@ const player1Score = player1.querySelector('.player__score');
 
 const memoryCardContainer = document.querySelector('.memory-card-container');
 
+let activePlayer = 0;
+let score = [0, 0];
+let turn = [];
+
 function loadGame() {
     setNames(
         Array.from(document.querySelectorAll('.name-input__input')).map(
@@ -30,13 +34,55 @@ function setNames(names) {
     player1.style = 'display: block;';
 }
 
+function displayWin(score) {
+    const name = document.querySelector(
+        `.player-${score[0] > score[1] ? 0 : 1} .player__name`
+    ).innerHTML;
+    document.querySelector('.win-message').innerHTML = `${name} wins!`;
+}
+
+function onMemoryCardClick(event, memoryCards) {
+    !turn.length &&
+        memoryCards.forEach((item) => {
+            item.style.setProperty('--memoryCardBgOpacity', '1');
+        });
+    if (!turn.includes(event.target)) {
+        event.target.style.setProperty('--memoryCardBgOpacity', '0');
+        turn.push(event.target);
+        if (turn.length === 2) {
+            if (
+                turn[0]
+                    .querySelector('.memory-card__image')
+                    .getAttribute('src') ===
+                turn[1].querySelector('.memory-card__image').getAttribute('src')
+            ) {
+                score[activePlayer] = score[activePlayer] + 1;
+                turn[0].style = 'opacity: 0;';
+                turn[1].style = 'opacity: 0;';
+                if (
+                    score[0] + score[1] ===
+                    document.querySelectorAll('.memory-card').length / 2
+                ) {
+                    displayWin(score);
+                }
+            } else {
+                document.querySelector(`.player-${activePlayer}`).style =
+                    'display: block;background-color: #fff;';
+                activePlayer = activePlayer === 0 ? 1 : 0;
+                document.querySelector(`.player-${activePlayer}`).style =
+                    'display: block;background-color: #090;';
+            }
+
+            turn = [];
+        }
+        player0Score.innerHTML = score[0];
+        player1Score.innerHTML = score[1];
+    }
+}
+
 function game() {
     const start = Date.now();
-    let turn = [];
     const timer = document.querySelector('.timer');
-
-    let activePlayer = 0;
-    let score = [0, 0];
     const memoryCards = document.querySelectorAll('.memory-card');
     const interval = setInterval(function () {
         const time = 20000 - (Date.now() - start);
@@ -45,63 +91,7 @@ function game() {
             memoryCards.forEach((card) => {
                 card.style.setProperty('--memoryCardBgOpacity', '1');
                 card.addEventListener('click', (event) => {
-                    !turn.length &&
-                        memoryCards.forEach((item) => {
-                            item.style.setProperty(
-                                '--memoryCardBgOpacity',
-                                '1'
-                            );
-                        });
-                    if (!turn.includes(event.target)) {
-                        event.target.style.setProperty(
-                            '--memoryCardBgOpacity',
-                            '0'
-                        );
-                        turn.push(event.target);
-                        if (turn.length === 2) {
-                            if (
-                                turn[0]
-                                    .querySelector('.memory-card__image')
-                                    .getAttribute('src') ===
-                                turn[1]
-                                    .querySelector('.memory-card__image')
-                                    .getAttribute('src')
-                            ) {
-                                score[activePlayer] = score[activePlayer] + 1;
-                                turn[0].style = 'opacity: 0;';
-                                turn[1].style = 'opacity: 0;';
-                                if (
-                                    score[0] + score[1] ===
-                                    document.querySelectorAll('.memory-card')
-                                        .length /
-                                        2
-                                ) {
-                                    const name = document.querySelector(
-                                        `.player-${
-                                            score[0] > score[1] ? 0 : 1
-                                        } .player__name`
-                                    ).innerHTML;
-                                    document.querySelector(
-                                        '.win-message'
-                                    ).innerHTML = `${name} wins!`;
-                                }
-                            } else {
-                                document.querySelector(
-                                    `.player-${activePlayer}`
-                                ).style =
-                                    'display: block;background-color: #fff;';
-                                activePlayer = activePlayer === 0 ? 1 : 0;
-                                document.querySelector(
-                                    `.player-${activePlayer}`
-                                ).style =
-                                    'display: block;background-color: #090;';
-                            }
-
-                            turn = [];
-                        }
-                        player0Score.innerHTML = score[0];
-                        player1Score.innerHTML = score[1];
-                    }
+                    onMemoryCardClick(event, memoryCards);
                 });
             });
             clearInterval(interval);
