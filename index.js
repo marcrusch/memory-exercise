@@ -13,16 +13,26 @@ let score = [0, 0];
 let turn = [];
 
 function loadGame() {
+    const pairs = parseInt(document.querySelector('.pair-input').value);
     setNames(
-        Array.from(document.querySelectorAll('.name-input__input')).map(
+        Array.from(document.querySelectorAll('.name-input')).map(
             (entry) => entry.value
         )
     );
     document.querySelector('.menu').style = 'display: none;';
     memoryCardContainer.style = 'display: grid;';
     memoryCardContainer.innerHTML = shuffle(
-        Array.from(document.querySelectorAll('.memory-card'))
+        Array.from(document.querySelectorAll('.memory-card')).slice(
+            0,
+            pairs * 2
+        )
     );
+    for (let i = 8; i > 1; i--) {
+        if (pairs % i === 0) {
+            memoryCardContainer.style.gridTemplateColumns = `repeat(${i}, 1fr)`;
+            break;
+        }
+    }
     document.querySelector('.timer').style = 'display: block;';
     game();
 }
