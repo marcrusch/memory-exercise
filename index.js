@@ -45,6 +45,10 @@ function setNames(names) {
 }
 
 function displayWin(score) {
+    if (score[0] === score[1]) {
+        document.querySelector('.win-message').innerHTML = 'Draw!';
+        return;
+    }
     const name = document.querySelector(
         `.player-${score[0] > score[1] ? 0 : 1} .player__name`
     ).innerHTML;
@@ -93,9 +97,10 @@ function onMemoryCardClick(event, memoryCards) {
 function game() {
     const start = Date.now();
     const timer = document.querySelector('.timer');
+    const timerLength = parseInt(timer.innerHTML) * 1000;
     const memoryCards = document.querySelectorAll('.memory-card');
     const interval = setInterval(function () {
-        const time = 20000 - (Date.now() - start);
+        const time = timerLength - (Date.now() - start);
         if (time <= 1000) {
             timer.remove();
             memoryCards.forEach((card) => {
@@ -108,7 +113,7 @@ function game() {
         } else {
             timer.innerHTML = Math.round(time / 1000);
         }
-    }, 100);
+    }, 1000);
 }
 
 function shuffle(cards) {
